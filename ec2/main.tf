@@ -1,4 +1,4 @@
-# Module to deploy basic networking 
+# Module to deploy basic networking for terraform 
 module "ec2_instances" {
   source              = "../modules/aws_ec2"
   env                 = var.env
