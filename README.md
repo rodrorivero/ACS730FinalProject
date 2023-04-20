@@ -1,7 +1,18 @@
-# ACS730FinalProject
+# ACS730FinalProject - Group 11
+
+Members:
+
+*Mohamed Zaheer Fasly
+*Stanley Amaobi Nnodu
+*Sandra Buma
+*Carlos Rodrigo Rivero
+
 - Pre requisites:
+
 Create a Clou9 environment for deploying 
+
 - Steps to deploy:
+
 1) Clone the Github repository on to your machine.
 2) Change the bucket config located in files: ec2/config.tf and network/config.tf to your own bucket name
 3) Create an shh Key file using: ssh-keygen FinalKey and copy both keys (public and private) to the paths: ec2/
