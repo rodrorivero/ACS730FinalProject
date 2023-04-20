@@ -99,9 +99,18 @@ resource "aws_security_group" "public_vms" {
   vpc_id      = data.terraform_remote_state.networking.outputs.vpc_id 
 
   ingress {
-    description      = "SSH from bastion"
+    description      = "SSH from outside"
     from_port        = 80
     to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  
+  ingress {
+    description      = "SSH from outside"
+    from_port        = 22
+    to_port          = 22
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
@@ -175,7 +184,7 @@ resource "aws_instance" "private_vms" {
 
   tags = merge(local.default_tags, 
   {
-  "Name" = "VM${count.index + 1} - Private"
+  "Name" = "VM${count.index + 5} - Private"
     
   }
   )
