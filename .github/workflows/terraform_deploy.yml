@@ -1,4 +1,4 @@
-name: "Terraform - Code Deploy"
+name: "Terraform * Deploy"
 # https://gaunacode.com/deploying-terraform-at-scale-with-github-actions
 on:
   push:
