@@ -20,7 +20,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  terraform:
+  terraform2:
     name: "Deploy Networking"
     runs-on: ubuntu-latest
     environment: staging
@@ -116,6 +116,7 @@ jobs:
         run: terraform apply -input=false tf.plan
         working-directory: ./networkg # Use your environment folder
         shell: bash
+  
   terraform:
     name: "Deploy EC2s"
     runs-on: ubuntu-latest
