@@ -272,6 +272,7 @@ resource "aws_instance" "public_vms_blank" {
     tags = merge(local.default_tags,
     {
       "Name" = "VM${count.index + 3} - Public"
+      "Content" = "Blank"
     }
   )
 }
