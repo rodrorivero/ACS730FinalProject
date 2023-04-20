@@ -99,9 +99,18 @@ resource "aws_security_group" "public_vms" {
   vpc_id      = data.terraform_remote_state.networking.outputs.vpc_id 
 
   ingress {
-    description      = "SSH from bastion"
+    description      = "SSH from outside"
     from_port        = 80
     to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  
+  ingress {
+    description      = "SSH from outside"
+    from_port        = 22
+    to_port          = 22
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
@@ -175,7 +184,7 @@ resource "aws_instance" "private_vms" {
 
   tags = merge(local.default_tags, 
   {
-  "Name" = "VM${count.index + 1} - Private"
+  "Name" = "VM${count.index + 5} - Private"
     
   }
   )
@@ -209,7 +218,7 @@ resource "aws_instance" "bastion_vm" {
     ls -lart /home/ec2-user/FinalKey > /home/ec2-user/log.txt
     yum -y update
     yum -y install httpd
-    echo "<h1>Final Group Assignment</h1><p>My private IP is <font color="blue">\$myip</font></p><ul><li>Mohamed Zaheer Fasly</li><li>Stanley Amaobi Nnodu</li><li>Carlos Rodrigo Rivero</li></ul>"  >  /var/www/html/index.html
+    echo "<h1>Final Group Assignment</h1><p>My private IP is <font color="blue">\$myip</font></p><ul><li>Mohamed Zaheer Fasly</li><li>Stanley Amaobi Nnodu</li><li>Sandra Buma</li><li>Carlos Rodrigo Rivero</li></ul>"  >  /var/www/html/index.html
     sudo systemctl start httpd
     sudo systemctl enable httpd
     EOF
@@ -272,6 +281,7 @@ resource "aws_instance" "public_vms_blank" {
     tags = merge(local.default_tags,
     {
       "Name" = "VM${count.index + 3} - Public"
+      "Content" = "Blank"
     }
   )
 }
