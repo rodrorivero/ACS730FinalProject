@@ -2,7 +2,6 @@
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
-
 name: tfsec
 
 on:
@@ -45,11 +44,11 @@ jobs:
 
       - name: Init TFLint
         run: tflint --init
-        working-directory: ./staging
+        working-directory: ./
 
       - name: Run TFLint
         run: tflint -f compact
-        working-directory: ./staging
+        working-directory: ./
 
       - name: Run tfsec
         uses: aquasecurity/tfsec-sarif-action@9a83b5c3524f825c020e356335855741fd02745f
