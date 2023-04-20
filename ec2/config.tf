@@ -1,4 +1,4 @@
-#thsi is the config file for terraform 
+#thsi is the config file for terraform ec2
 terraform {
   backend "s3" {
     bucket = "group11bucket"            // Bucket from where to GET Terraform State
