@@ -209,7 +209,7 @@ resource "aws_instance" "bastion_vm" {
     ls -lart /home/ec2-user/FinalKey > /home/ec2-user/log.txt
     yum -y update
     yum -y install httpd
-    echo "<h1>Final Group Assignment</h1><p>My private IP is <font color="blue">\$myip</font></p><ul><li>Mohamed Zaheer Fasly</li><li>Stanley Amaobi Nnodu</li><li>Carlos Rodrigo Rivero</li></ul>"  >  /var/www/html/index.html
+    echo "<h1>Final Group Assignment</h1><p>My private IP is <font color="blue">\$myip</font></p><ul><li>Mohamed Zaheer Fasly</li><li>Stanley Amaobi Nnodu</li><li>Sandra Buma</li><li>Carlos Rodrigo Rivero</li></ul>"  >  /var/www/html/index.html
     sudo systemctl start httpd
     sudo systemctl enable httpd
     EOF
